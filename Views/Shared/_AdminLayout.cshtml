@@ -1,0 +1,14 @@
+@{
+    Layout = "/Views/Shared/_NavLayout.cshtml"; 
+    if(string.IsNullOrEmpty(ViewBag.PageName)){
+         ViewBag.PageName = "Admin" ; 
+    }
+}
+
+    <div class="container-fluid py-4">
+      
+
+    @RenderBody()
+
+    </div>
+    

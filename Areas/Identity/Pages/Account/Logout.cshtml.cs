@@ -24,6 +24,10 @@ namespace BookWorn.Areas.Identity.Pages.Account
             _logger = logger;
         }
 
+        public async Task<IActionResult> OnGet(string returnUrl = null){
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("index","home");
+        }
         public async Task<IActionResult> OnPost(string returnUrl = null)
         {
             await _signInManager.SignOutAsync();

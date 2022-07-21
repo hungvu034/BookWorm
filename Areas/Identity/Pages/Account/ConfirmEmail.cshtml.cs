@@ -18,10 +18,11 @@ namespace BookWorn.Areas.Identity.Pages.Account
     public class ConfirmEmailModel : PageModel
     {
         private readonly UserManager<User> _userManager;
-
-        public ConfirmEmailModel(UserManager<User> userManager)
+        private readonly SignInManager<User> _signInManager; 
+        public ConfirmEmailModel(UserManager<User> userManager , SignInManager<User> signInManager  )
         {
             _userManager = userManager;
+            this._signInManager = signInManager ; 
         }
 
         /// <summary>
@@ -32,21 +33,23 @@ namespace BookWorn.Areas.Identity.Pages.Account
         public string StatusMessage { get; set; }
         public async Task<IActionResult> OnGetAsync(string userId, string code)
         {
-            if (userId == null || code == null)
-            {
-                return RedirectToPage("Index");
-            }
+            // if (userId == null || code == null)
+            // {
+            //     return RedirectToPage("Index");
+            // }
 
-            var user = await _userManager.FindByIdAsync(userId);
-            if (user == null)
-            {
-                return NotFound($"Unable to load user with ID '{userId}'.");
-            }
-
+             var user = await _userManager.FindByIdAsync(userId);
+            // if (user == null)
+            // {
+            //     return NotFound($"Unable to load user with ID '{userId}'.");
+            // }
+            await _signInManager.SignInAsync(user , false);
             code = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(code));
+           //  user.EmailConfirmed = true ; 
             var result = await _userManager.ConfirmEmailAsync(user, code);
             StatusMessage = result.Succeeded ? "Thank you for confirming your email." : "Error confirming your email.";
-            return Page();
+            return RedirectToAction("index" , "home");
+            // return Page();
         }
     }
 }

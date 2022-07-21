@@ -1,8 +1,10 @@
+using System.ComponentModel.DataAnnotations;
 namespace BookWorn.Models
 {
     public class Bill
     {
-        public string ID{get; set;}
+        [KeyAttribute()]
+        public string? ID{get; set;}
         public DateTime Date{get; set;}
         public int UserBuy{get; set;}
         public int UserSell{get ; set ;}

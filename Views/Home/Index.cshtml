@@ -1,1 +1,6 @@
-﻿<h1>Hello</h1>
+﻿@model List<Product>
+
+@foreach (Product item in Model)
+{
+    Html.RenderPartial("_ProductCardPartial",item);
+}

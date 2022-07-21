@@ -1,0 +1,106 @@
+@using BookWorm.Service 
+@model Product
+@inject CategoryService _categoryService
+@{
+    Layout = "/Views/Shared/_AdminLayout.cshtml" ;
+}
+
+@{
+  @* Model.Category ; 
+  Model.Content ; 
+  Model.Image ; 
+  Model.Name ; 
+  Model.Price ;  *@
+  
+}
+<body class="g-sidenav-show  bg-gray-100 virtual-reality">
+
+  <div class="border-radius-xl mt-3 mx-3 position-relative" style="background-image: url('/assets/img/vr-bg.jpg') ; background-size: cover;">
+    <main class="main-content mt-1 border-radius-lg">
+      <div class="section min-vh-100 position-relative transform-scale-0 transform-scale-md-7">
+        <form method="post" enctype="multipart/form-data">
+            <input asp-for="@Model.CreatedDate" hidden>
+            <input asp-for="@Model.ID" hidden>
+            <input asp-for="@Model.Image" hidden>
+            <input asp-for="@Model.UserID" hidden>
+            <div class="card">
+               <div class="card-body">
+                  <div class="mb-3">
+                      <h2 class="text text-secondary fw-border">Name</h2>
+                      <input style="font-size:30px" placeholder=" Name"  class="form-control" asp-for="@Model.Name">
+                      <span class="text text-danger" style="font-size: 20px;" asp-validation-for="@Model.Name"></span>
+                    </div>
+                      <div class="mb-3">
+                      <h2 class="text text-secondary fw-border">Title</h2>
+                      <input style="font-size:30px" placeholder=" Title"  class="form-control" asp-for="@Model.Title">
+                      <span class="text text-danger" style="font-size: 20px;" asp-validation-for="@Model.Title"></span>
+                    </div>
+                    <div class="mb-3">
+                      <h2 class="text text-secondary fw-border">Content</h2>
+                    <textarea class="form-control" placeholder=" Content" style="font-size:30px ; height: 100px;" asp-for="@Model.Content"></textarea>
+                    <span class="text text-danger" style="font-size: 20px;" asp-validation-for="@Model.Content"></span>
+                  </div>
+                    <div class="mb-3">
+                      <h2 class="text text-secondary fw-border">Price</h2>
+                      <input style="font-size:30px" placeholder="Price"  class="form-control" asp-for="@Model.Price">
+                      <span class="text text-danger" style="font-size: 20px;" asp-validation-for="@Model.Price"></span>
+                    </div>
+                    <div class="mb-3">
+                      <h2 class="text text-secondary fw-border">Upload image</h2>
+                      <input name="imageFile" style="font-size:35px" class="form-control" type="file" id="formFile" multiple>  
+                    </div>
+                    @{
+                      List<SelectListItem> selectListItems = new List<SelectListItem>();
+                      foreach(var item in _categoryService.GetIdNameCategory()){
+                        selectListItems.Add(new SelectListItem(item.Value , item.Key));
+                      } 
+                    }
+                    @Html.DropDownListFor(product => product.CategoryID , selectListItems , "Category" , new { @class = "btn btn-secondary form-text dropdown-toggle display-2" , style = "font-size: 25px"  , text = "Select Category"})
+                         <div class="mb-3">
+                      <h2 class="text text-secondary fw-border">Select discount</h2>
+                      <input style="font-size:35px"  class="form-control" asp-for="@Model.Discount" multiple>  
+                    </div>
+                           </div>
+               
+                    <span class="text text-danger" style="font-size: 20px;" asp-validation-for="@Model.CategoryID"></span>
+                    <div>
+                      <input type="submit" class="btn btn-success center " style="font-size:30px ;margin-left:650px "  value="Submit">
+                    </div>
+
+
+              </div>
+        </form>
+            <div class="card-footer text-muted">
+              2 days ago   
+            </div>
+              
+        </div>
+        </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  
+
+ 
+  <!--   Core JS Files   -->
+  <script src="/assets/js/core/popper.min.js"></script>
+  <script src="/assets/js/core/bootstrap.min.js"></script>
+  <script src="/assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="/assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+  </script>
+  <!-- Github buttons -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.6"></script>
+</body>
+
+</html>

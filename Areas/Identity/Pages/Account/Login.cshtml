@@ -1,4 +1,4 @@
-﻿@page "/Login"
+﻿@page "/Sign In"
 @model LoginModel
 
 @{
@@ -14,10 +14,10 @@
                 </div>
                  <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="card-body">
-                  <form role="form" id="account" method="post">
+                  <form role="form" method="post">
                     <label>Email</label>
                     <div class="mb-3">
-                      <input type="email" asp-for="Input.Email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email-addon">
+                      <input asp-for="Input.Email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email-addon">
                        <span asp-validation-for="Input.Email" class="text-danger"></span>
                     </div>
                     <label>Password</label>
@@ -49,7 +49,7 @@
             </div>
           </div>
 
-
+         
             <h3>Use another service to log in.</h3>
             <hr />
             @{

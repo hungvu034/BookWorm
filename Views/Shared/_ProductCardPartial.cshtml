@@ -1,0 +1,44 @@
+@model Product
+<div class="card mb-3" >
+            <div class="card-body p-3">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="d-flex flex-column h-100">
+                    <p class="mb-1 pt-2 text-bold">@Model.Title</p>
+                    <h5 class="font-weight-bolder">@Model.Name</h5>
+                    <p class="mb-5">@Model.Content</p>
+                    <p>Price: @Model.Price$</p>
+                    <p>From: @Model.UserID</p>
+                    <a class="text-body text-sm font-weight-bold mb-0 icon-move-right mt-auto" asp-action="detail" asp-route-id="@Model.ID">
+                      Read More
+                      <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-lg-5 ms-auto text-center mt-5 mt-lg-0">
+                  <div class="border-radius-lg">
+                 
+                
+                      <img style="width: 400px; height:300px" class="mb-3 position-relative z-index-2  border-radius-lg" src="/images/@Model.Image" alt="rocket">
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+
+@{
+        @* public class Product
+    {
+        public string? ID{ get; set;}
+        public string Name{ get; set; }
+        public string Image{ get; set;} 
+        public decimal Price{ get; set;}
+        public string Content{get; set;}
+        public string Title{get; set;}
+        public string? UserID { get; set; }
+        public User? User { get; set; }
+        public Category? Category { get; set; }
+        public string? CategoryID { get; set; }
+    } *@
+}

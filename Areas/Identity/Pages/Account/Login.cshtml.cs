@@ -27,6 +27,8 @@ namespace BookWorn.Areas.Identity.Pages.Account
         {
             _signInManager = signInManager;
             _logger = logger;
+            Console.WriteLine("ham tao");
+            Console.WriteLine(ReturnUrl);
         }
 
         /// <summary>
@@ -66,7 +68,7 @@ namespace BookWorn.Areas.Identity.Pages.Account
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [Required]
-            [EmailAddress]
+   
             public string Email { get; set; }
 
             /// <summary>
@@ -104,10 +106,11 @@ namespace BookWorn.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
+            Console.WriteLine( "ham post" + returnUrl);
             returnUrl ??= Url.Content("~/");
 
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-
+        
             if (ModelState.IsValid)
             {
                 // This doesn't count login failures towards account lockout

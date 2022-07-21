@@ -7,6 +7,7 @@ namespace BookWorn.Service
 {
     public class MailSender : IEmailSender
     {
+       
         private MailSettings settings ; 
         public MailSender(IOptions<MailSettings> options){
             this.settings = options.Value ; 
