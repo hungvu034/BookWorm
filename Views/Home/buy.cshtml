@@ -1,0 +1,21 @@
+@using BookWorm.Models 
+@model StringModel
+@{
+       Layout = "/Views/Shared/_AdminLayout.cshtml" ; 
+       ViewBag.PageName = "buy" ; 
+}
+
+@if (!String.IsNullOrEmpty(Model.StringMessage))
+{
+    var statusMessageClass = Model.StringMessage.StartsWith("You can't") ? "danger" : "success";
+    <div class="alert alert-@statusMessageClass alert-dismissible" role="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        @Model.StringMessage
+    </div>
+
+     string returnUrl = Context.Request.Query["returnUrl"] ; 
+    
+    <div>
+        <a class="btn btn-primary" href="@returnUrl">Go Back</a>
+    </div>
+}

@@ -33,8 +33,8 @@ namespace BookWorm.Controllers
             _signInManager = signInManager ; 
             _productService = productService ; 
             _logger = logger;
-
         }
+        [Route("/admin/{id?}")]
         public IActionResult Index()
         {
             string UserID = _userManage.GetUserId(User); 
@@ -101,8 +101,11 @@ namespace BookWorm.Controllers
             }
             return View(product);
         }
-
-        public IActionResult UserProfile(){
+        [Route("/billing/{id?}")]
+        public IActionResult Bill(){
+            return View();  
+        }
+        public IActionResult Profile(){
             return View(); 
         }
     }

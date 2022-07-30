@@ -179,6 +179,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/hungvu/Desktop/Asp.net/BookWorm/BookWorm/Views/Admin/bill.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vYmlsbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/hungvu/Desktop/Asp.net/BookWorm/BookWorm/Views/Admin/create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vY3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -195,6 +199,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vaW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/hungvu/Desktop/Asp.net/BookWorm/BookWorm/Views/Home/buy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9idXkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/hungvu/Desktop/Asp.net/BookWorm/BookWorm/Views/Home/detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9kZXRhaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -207,8 +215,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/hungvu/Desktop/Asp.net/BookWorm/BookWorm/Views/Home/user.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS91c2VyLmNzaHRtbA==
+[/home/hungvu/Desktop/Asp.net/BookWorm/BookWorm/Views/Home/profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9wcm9maWxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/hungvu/Desktop/Asp.net/BookWorm/BookWorm/Views/Shared/Error.cshtml]
@@ -217,6 +225,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/home/hungvu/Desktop/Asp.net/BookWorm/BookWorm/Views/Shared/_AdminLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19BZG1pbkxheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/hungvu/Desktop/Asp.net/BookWorm/BookWorm/Views/Shared/_AdminNavbarLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19BZG1pbk5hdmJhckxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/hungvu/Desktop/Asp.net/BookWorm/BookWorm/Views/Shared/_LayoutLogin.cshtml]
