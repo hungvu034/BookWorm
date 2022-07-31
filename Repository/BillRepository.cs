@@ -13,6 +13,13 @@ namespace BookWorm.Repository
         public BillRepository(EntityModel entityModel){
             _entityModel = entityModel ; 
         }
+
+        public List<Bill> GetAllBill(){
+            return _entityModel.Bills.ToList() ; 
+        }
+        public List<ProductBill> GetAllProductBill(){
+            return _entityModel.ProductBills.ToList();
+        }
         public void CreateBill(string userSellID , string userBuyID , Product product){
             Bill bill = new Bill(){
                 ID = Guid.NewGuid().ToString() , 

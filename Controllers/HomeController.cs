@@ -64,7 +64,6 @@ public class HomeController : Controller
     [Route("/buy/{id?}")]
     public async Task<IActionResult> Buy(string id , string returnUrl){
        Product product = _productService.GetProductById(id); 
-       
        User user = await _userManager.GetUserAsync(User);
        StringModel stringModel = new StringModel(); 
        if(user.Id == product.UserID){
@@ -75,13 +74,14 @@ public class HomeController : Controller
        }
        else{
             stringModel.StringMessage = "Buy success" ; 
-            user.Money -= product.Price ; 
+            user.Money -= product.Price ;   
+            User Seller = await _userManager.FindByIdAsync(product.UserID) ; 
+            Seller.Money += product.Price ; 
             await _userManager.UpdateAsync(user);
             _buyService.buyProduct(user.Id , product.UserID , product.ID);
        }
        return View(stringModel); 
     }
-    
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

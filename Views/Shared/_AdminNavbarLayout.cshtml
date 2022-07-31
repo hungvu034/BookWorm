@@ -1,5 +1,7 @@
 
 @using Microsoft.AspNetCore.Identity 
+@using BookWorm.Service 
+@inject BuyService _buyService 
 @inject UserManager<User> _userManager ;  
 @{
     Layout = "/Views/Shared/_AdminLayout.cshtml" ;
@@ -7,6 +9,12 @@
 
 @{
   User currentUser = await _userManager.GetUserAsync(User);
+  Decimal Income , SpendMoney ; 
+  Income = _buyService.GetIncomeByUserID(currentUser.Id);
+  SpendMoney = _buyService.GetMoneySpendByUserID(currentUser.Id);
+  double TodayUser = _buyService.CountTodayUser(currentUser.Id);
+  double SpendPercent = Decimal.ToInt32(SpendMoney) * 100 / (Decimal.ToInt32(currentUser.Money) + Decimal.ToInt32(SpendMoney)) ;
+    double SalePercent = Decimal.ToInt32(Income) * 100 / (Decimal.ToInt32(currentUser.Money) - Decimal.ToInt32(Income)) ;
 }
   <div class="row mb-3">
             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
@@ -39,8 +47,8 @@
                   <div class="numbers">
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's Users</p>
                     <h5 class="font-weight-bolder mb-0">
-                      2,300
-                      <span class="text-success text-sm font-weight-bolder">+3%</span>
+                      @TodayUser
+                      <span class="text-success text-sm font-weight-bolder"></span>
                     </h5>
                   </div>
                 </div>
@@ -59,10 +67,10 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">New Clients</p>
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Money Spend</p>
                     <h5 class="font-weight-bolder mb-0">
-                      +3,462
-                      <span class="text-danger text-sm font-weight-bolder">-2%</span>
+                      $@SpendMoney
+                      <span class="text-danger text-sm font-weight-bolder">-@string.Format("{0:0.00}",SpendPercent)%</span>
                     </h5>
                   </div>
                 </div>
@@ -83,8 +91,8 @@
                   <div class="numbers">
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Sales</p>
                     <h5 class="font-weight-bolder mb-0">
-                      $103,430
-                      <span class="text-success text-sm font-weight-bolder">+5%</span>
+                      $@Income
+                      <span class="text-success text-sm font-weight-bolder">+@SalePercent%</span>
                     </h5>
                   </div>
                 </div>
