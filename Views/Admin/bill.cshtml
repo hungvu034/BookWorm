@@ -82,7 +82,7 @@
                         }
                     }
                     
-                    <button class="btn btn-icon-only btn-rounded btn-outline-@state mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-arrow-@arrow"></i></button>
+                    <button class="btn btn-icon-only btn-rounded btn-outline-@state mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fa fa-arrow-@arrow"></i></button>
                     <div class="d-flex flex-column">
                       <h6 class="mb-1 text-dark text-sm">@item.Product.Name</h6>
                       <span class="text-xs">@item.Date</span>
@@ -98,7 +98,8 @@
                             <h6 class="text-uppercase text-body text-xs font-weight-bolder mb-3">Yesterday</h6>
               <ul class="list-group">
                   @{
-                  
+                    try{
+
                     DateTime date = new DateTime(DateTime.Now.Year , DateTime.Now.Month , DateTime.Now.Day - 1) ; 
                     foreach(var item in _buyService.getProductBillByTime(DateTime.Today.AddDays(-1))){
                 <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
@@ -131,9 +132,13 @@
                   </div>
                 </li>
                     }
+                    }
+                    catch{
+                      
+                    }
                   }
               </ul>
             </div>
           </div>
         </div>
-      </div>((byte)
+      </div>

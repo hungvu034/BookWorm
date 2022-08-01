@@ -1,6 +1,11 @@
 ﻿@model List<Product>
 
+<div class="row">
+
 @foreach (Product item in Model)
 {
+    
     Html.RenderPartial("_ProductCardPartial",item);
 }
+
+</div>

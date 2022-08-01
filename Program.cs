@@ -29,7 +29,6 @@ builder.Services.AddDefaultIdentity<User>(options => {
     .AddEntityFrameworkStores<EntityModel>()
     .AddDefaultTokenProviders()
     ;
-
 builder.Services.AddScoped<ProductRepository>();
 builder.Services.AddScoped<CategoryRepository>();
 builder.Services.AddScoped<ProductService>(); 
@@ -44,15 +43,12 @@ builder.Services.ConfigureApplicationCookie(options=> {
     options.AccessDeniedPath = "/Identity/Account/AccessDeined" ; 
 });
 var app = builder.Build();
-// dotnet aspnet-codegenerator identity -dc BookWorn.Models.EntityModel
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    
     app.UseHsts();
 }
-
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();

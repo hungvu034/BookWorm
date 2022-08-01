@@ -29,9 +29,7 @@ public class HomeController : Controller
     public IActionResult Index(string? id , string textFind)
     {
         IEnumerable<Product> products = _productService.GetAllProduct() ; 
-        if(!string.IsNullOrEmpty(id)){
-            products = products.Where(product => product.CategoryID == id);
-        }
+
         if(!string.IsNullOrEmpty(textFind)){
             products = products.Where(product => product.Name.ToLower().Contains(textFind.ToLower()));
         }

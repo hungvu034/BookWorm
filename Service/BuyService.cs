@@ -9,6 +9,7 @@ namespace BookWorm.Service
 {
     public class BuyService
     {
+        private const int MAX = 4 ; 
         private readonly CategoryService _categoryService ; 
         private readonly ProductService _productService ; 
         private readonly BillRepository _billRepository ; 
@@ -50,7 +51,8 @@ namespace BookWorm.Service
         }
         
         public List<Product> GetProductBySellerAndCustomer(string SellerID , string CusomnerID){
-                var ProductIDs = _billRepository.GetAllBill().Where(bill => { return bill.UserSell == SellerID && bill.UserBuy == CusomnerID ; })
+                var ProductIDs = _billRepository.GetAllBill().Where(bill => 
+                { return bill.UserSell == SellerID && bill.UserBuy == CusomnerID ; })
                                         .Select(bill => bill.ProductID).Distinct();
                 List<Product> products = new List<Product>();
                 foreach(var id in ProductIDs){
@@ -81,6 +83,38 @@ namespace BookWorm.Service
         public int CountTodayUser(string UserID){
             var Bills = _billRepository.GetAllBill(); 
             return Bills.Where(bill => bill.UserSell == UserID).DistinctBy(bill => bill.UserBuy).Count();
+        }
+
+        public List<Product> GetTopBestSellerProdut(){
+            var bills = _billRepository.GetAllBill();
+            var BillGrouping = bills.GroupBy(bill => bill.ProductID ); 
+            int i = 0 ; 
+            List<Product> products = new List<Product>(); 
+            foreach(var bill in BillGrouping){
+                i++ ; 
+                products.Add(_productService.GetProductById(bill.Key));
+                if(i == MAX){
+                    break ; 
+                }
+            }
+            return products;
+        }
+
+        public List<Product> GetBessDiscountProduct(){
+            var products = _productService.GetAllProduct() ; 
+            var topProduct = from product in products
+                             orderby product.Discount 
+                             select product ;
+            return topProduct.Take(MAX).ToList() ;    
+        }
+
+        public List<Product> GetTopNewProduct(){
+            var products = _productService.GetAllProduct() ; 
+            Comparison<Product> comparison = (Product left , Product right) => {
+                return DateTime.Compare((DateTime)left.CreatedDate , (DateTime)right.CreatedDate) ; 
+            };
+            products.Sort(comparison);
+            return products.Take(MAX).ToList();
         }
     }
     

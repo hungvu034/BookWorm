@@ -1,4 +1,5 @@
-﻿@inject BookWorm.Service.CategoryService CategoryService 
+﻿@inject BookWorm.Service.CategoryService _categoryService 
+@inject BookWorm.Service.BuyService _buyService 
 @{
     Layout = "/Views/Shared/_NavLayout.cshtml"; 
     ViewBag.PageName = "Shop"; 
@@ -18,31 +19,72 @@
         
         <div class="col-lg-3">
           <div class="card h-100 p-3">
-            <div class="overflow-hidden position-relative border-radius-lg bg-cover h-100" style="background-image: url('/assets/img/ivancik.jpg');">
+            <div class="overflow-hidden position-relative border-radius-lg bg-cover h-100">
               <span class="mask bg-gradient-dark"></span>
               <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
-                <h5 class="text-primary font-weight-bolder mb-4 pt-2">Filter by category </h5>
-                @{
-                  var Categories = CategoryService.GetAllCategories() ;
-                  <a asp-action="index"  class="text-white font-weight-bolder mb-4 pt-2" asp-route-id="">Show all</a>
-                  foreach(var item in Categories){
-                    <a asp-route-id="@item.ID" class="text-white font-weight-bolder mb-4 pt-2">@item.Name</a>
-                  }
-                }
-                  <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
+            
+                 <h3><a asp-controller="home" asp-action="index" asp-route-id="newproduct"> <i class="fas fa-arrow-right text-medium text-info ms-1" aria-hidden="true">&ensp;&ensp;&ensp;New Product </a></h3></i>
+                   <h3><a asp-controller="home" asp-action="index" asp-route-id="bestdiscount"> <i class="fas fa-arrow-right text-medium text-success ms-1" aria-hidden="true">&ensp;&ensp;&ensp;Best Discount</a></h3></i>
+                    <h3><a asp-controller="home" asp-action="index" asp-route-id="bestseller"> <i class="fas fa-arrow-right text-medium text-primary ms-1" aria-hidden="true">&ensp;&ensp;&ensp;Best Seller</a></h3></i>
                 </a>
               </div>
             </div>
           </div>
         </div>
         
-        <div class="col-lg-9 mb-lg-0 mb-4">
-          
+        <div class="col-lg-9 mb-lg-0 mb-4 bg-gradient-warning border-radius-lg bg-cover ">
+            <div class="row">
+                @{
+                  List<Product> products = new List<Product>();
+                  if(Context.Request.RouteValues["id"] != null){
+
+                  if(Context.Request.RouteValues["id"].ToString() == "newproduct"){
+                      products = _buyService.GetTopNewProduct() ; 
+                  }
+                  else if(Context.Request.RouteValues["id"].ToString() == "bestdiscount"){
+                      products = _buyService.GetBessDiscountProduct();
+                  }
+                  else if(Context.Request.RouteValues["id"].ToString() == "bestseller"){
+                      products = _buyService.GetTopBestSellerProdut();
+                  }}
+                  else{
+                       products = _buyService.GetTopNewProduct() ; 
+                  }
+
+                  foreach(var item in products){
+                        <div class="col-xl-3 col-md-6 mb-xl-0 mb-4 mt-3">
+                  <div class="card card-blog card-plain">
+                    <div class="position-relative">
+                      <a class="d-block shadow-xl border-radius-xl">
+                        <img src="/images/@item.Image" alt="img-blur-shadow" style="width: 23rem; height: 15rem" class="img-fluid shadow border-radius-xl">
+                      </a>
+                    </div>
+                    <div class="card-body px-1 pb-0">
+                      
+                      <a href="javascript:;">
+                        <h5>@item.Name</h5>
+                        <h5>
+                          @item.Price$ 
+                        </h5>
+                      </a>
+                      
+                      <div class="d-flex align-items-center justify-content-between">
+                        <button type="button" class="btn bg-gradient-dark text-white btn-outline-dark btn-sm mb-0">View Product</button>
+                       
+                      </div> 
+                      <h1></h1>
+                    </div>
+                  </div>
+                        </div>
+                  }
+                }
+            </div>
+        </div>              
+
+                  
         @RenderBody()
-
-        </div>
-
    
       </div>  
+    </div>
 
       

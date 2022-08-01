@@ -129,17 +129,13 @@
         </div>
       @{
         var products =  _productService.GetProductsByUserID(Model.CurrentUser.Id);
-        foreach(var product in products){
+      }
+        
+        <h2 class="text-secondary mt-3 mb-4">Products</h2>
+        <div class="row">
+        @foreach(var product in products){
     
-           <div class="col-12 mt-4">
-          <div class="card mb-4">
-            <div class="card-header pb-0 p-3">
-              <h6 class="mb-1">@product.Name</h6>
-              <p class="text-sm">@product.Title</p>
-            </div>
-            <div class="card-body p-3">
-              <div class="row">
-                <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
+                         <div class="col-xl-3 col-md-6 mb-xl-0 mb-4 mt-3">
                   <div class="card card-blog card-plain">
                     <div class="position-relative">
                       <a class="d-block shadow-xl border-radius-xl">
@@ -147,6 +143,7 @@
                       </a>
                     </div>
                     <div class="card-body px-1 pb-0">
+                      <h3>@product.Name</h3>
                       <p class="text-gradient text-dark mb-2 text-sm">Create Time: @product.CreatedDate</p>
                       <a href="javascript:;">
                         <h5>
@@ -157,16 +154,13 @@
                         @product.Content
                       </p>
                       <div class="d-flex align-items-center justify-content-between">
-                        <button type="button" class="btn btn-outline-primary btn-sm mb-0">View Project</button>
+                        <a type="button" asp-action="detail" asp-route-id=@product.ID asp-controller="home" class="btn btn-outline-primary btn-sm mb-0">View Project</a>
                         
                       </div>
+                     
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
         }
-      }
-      </div>
+        </div>
+    

@@ -3,6 +3,7 @@
 @inject UserManager<User> _userManager 
 @{
     Layout = "/Views/Shared/_AdminLayout.cshtml" ;
+    ViewBag.PageName = "Shop";
 }
 <html lang="en">
 <head>
@@ -61,7 +62,6 @@
                 <a class="card-link btn btn-primary" asp-controller="home" asp-action="index">Back</a>
                 <a asp-action="buy" asp-route-returnUrl="/billing" asp-route-id=@Model.ID class="card-link btn btn-success" >Buy</a>
             </div>
-
             </div>  
 		</div>
 	</div>
