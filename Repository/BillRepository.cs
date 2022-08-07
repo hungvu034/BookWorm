@@ -39,6 +39,14 @@ namespace BookWorm.Repository
             _entityModel.ProductBills.Add(productBill);
             _entityModel.SaveChanges();
         }
-
+        public void RemoveBillByProductID(string id){
+            var bills = GetAllBill(); 
+            foreach(var bill in bills){
+                if(bill.ProductID == id){
+                    _entityModel.Remove(bill);
+                }
+            }
+            _entityModel.SaveChanges();
+        }
     }
 }

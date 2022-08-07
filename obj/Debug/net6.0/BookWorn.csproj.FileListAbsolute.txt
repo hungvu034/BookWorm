@@ -570,4 +570,3 @@ C:/Users/Admin/Desktop/BookWorn/bin/Debug/net6.0/BouncyCastle.Crypto.dll
 /home/hungvu/Desktop/Asp.net/BookWorm/BookWorm/obj/Debug/net6.0/ref/BookWorn.dll
 /home/hungvu/Desktop/Asp.net/BookWorm/BookWorm/obj/Debug/net6.0/BookWorn.pdb
 /home/hungvu/Desktop/Asp.net/BookWorm/BookWorm/obj/Debug/net6.0/BookWorn.genruntimeconfig.cache
-/home/hungvu/Desktop/Asp.net/BookWorm/BookWorm/bin/Debug/net6.0/soft-ui-dashboard-main/soft-ui-dashboard-main/package.json

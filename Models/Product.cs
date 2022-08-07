@@ -30,5 +30,7 @@ namespace BookWorn.Models
         public Category? Category { get; set; }
         [Required()]
         public string CategoryID { get; set; }
+
+
     }
 }

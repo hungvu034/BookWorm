@@ -72,9 +72,9 @@ public class HomeController : Controller
        }
        else{
             stringModel.StringMessage = "Buy success" ; 
-            user.Money -= product.Price ;   
+            user.Money -= product.Price *  ( 100 - product.Discount ) / 100   ;   
             User Seller = await _userManager.FindByIdAsync(product.UserID) ; 
-            Seller.Money += product.Price ; 
+            Seller.Money += product.Price * ( 100 - product.Discount ) / 100   ; 
             await _userManager.UpdateAsync(user);
             _buyService.buyProduct(user.Id , product.UserID , product.ID);
        }

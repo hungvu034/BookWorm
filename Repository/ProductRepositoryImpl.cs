@@ -20,7 +20,7 @@ namespace BookWorm.Repository
                           where products.ID == ID
                           select products).FirstOrDefault(); 
             if(product == null){
-                throw new Exception(message: "Product ID NULL") ;
+             
             }
             return product ; 
         }

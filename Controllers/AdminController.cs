@@ -1,3 +1,4 @@
+using System.Xml;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -43,6 +44,7 @@ namespace BookWorm.Controllers
             }
             List<Product> products = _productService.GetProductsByUserID(UserID);
             return View(products);
+            
         }
         
         public IActionResult Detail(string id){
@@ -50,6 +52,7 @@ namespace BookWorm.Controllers
             List<Product> products = _productService.GetProductsByUserID(UserID);    
             var product = products.Find(product => product.ID == id); 
             return View(product);
+    
         }
         [HttpGet()]
         public IActionResult Edit(string id){

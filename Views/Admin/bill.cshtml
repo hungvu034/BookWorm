@@ -89,7 +89,7 @@
                     </div>
                   </div>
                   <div class="d-flex align-items-center text-@state text-gradient text-sm font-weight-bold">
-                    @ope $ @item.Product.Price
+                    @ope $ @(item.Product.Price - item.Product.Price * item.Product.Discount / 100) 
                   </div>
                 </li>
                     }
@@ -128,7 +128,7 @@
                     </div>
                   </div>
                   <div class="d-flex align-items-center text-@state text-gradient text-sm font-weight-bold">
-                    @ope $ @item.Product.Price
+                    @ope $ @(item.Product.Price - item.Product.Price * item.Product.Discount / 100) 
                   </div>
                 </li>
                     }

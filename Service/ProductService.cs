@@ -12,8 +12,11 @@ namespace BookWorm.Service
     public class ProductService
     {
         private ProductRepository _productRepository ; 
-        public ProductService(ProductRepository productRepository , CategoryRepository categoryRepository){
+        private BillRepository _billRepository ; 
+        public ProductService(ProductRepository productRepository , CategoryRepository categoryRepository , BillRepository billRepository){
             _productRepository = productRepository ; 
+            _billRepository = billRepository ; 
+
         }
         public List<Product> GetAllProduct(){
             return _productRepository.GetProducts(); 
@@ -40,6 +43,7 @@ namespace BookWorm.Service
         }
         public void RemoveProduct(Product product){
             _productRepository.DeleteProduct(product);
+            _billRepository.RemoveBillByProductID(product.ID);
         }
     }
 }

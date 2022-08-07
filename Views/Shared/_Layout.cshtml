@@ -4,7 +4,26 @@
     Layout = "/Views/Shared/_NavLayout.cshtml"; 
     ViewBag.PageName = "Shop"; 
 }
-    
+                @{
+               string NewProductColor = "" ; 
+                  string BesDiscountColor = "" ;
+                  string BestSellerColor = ""; 
+                  if(Context.Request.RouteValues["id"] != null){
+
+                  if(Context.Request.RouteValues["id"].ToString() == "newproduct"){ 
+                       NewProductColor += "info" ; 
+                  }
+                  else if(Context.Request.RouteValues["id"].ToString() == "bestdiscount"){
+                      BesDiscountColor += "success" ; 
+                  }
+                  else if(Context.Request.RouteValues["id"].ToString() == "bestseller"){
+                      BestSellerColor += "primary"; 
+                   }}
+                  else{
+                       NewProductColor += "info" ; 
+                  }
+
+            }
 
     <div class="container-fluid py-4">  @* thẻ chính  *@
 
@@ -22,10 +41,9 @@
             <div class="overflow-hidden position-relative border-radius-lg bg-cover h-100">
               <span class="mask bg-gradient-dark"></span>
               <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
-            
-                 <h3><a asp-controller="home" asp-action="index" asp-route-id="newproduct"> <i class="fas fa-arrow-right text-medium text-info ms-1" aria-hidden="true">&ensp;&ensp;&ensp;New Product </a></h3></i>
-                   <h3><a asp-controller="home" asp-action="index" asp-route-id="bestdiscount"> <i class="fas fa-arrow-right text-medium text-success ms-1" aria-hidden="true">&ensp;&ensp;&ensp;Best Discount</a></h3></i>
-                    <h3><a asp-controller="home" asp-action="index" asp-route-id="bestseller"> <i class="fas fa-arrow-right text-medium text-primary ms-1" aria-hidden="true">&ensp;&ensp;&ensp;Best Seller</a></h3></i>
+                 <h3  ><a class="text-@NewProductColor" asp-controller="home" asp-action="index" asp-route-id="newproduct"> <i class="fas fa-arrow-right text-medium ms-1" aria-hidden="true"></i>&ensp;&ensp;&ensp;New Product</a></h3>
+                   <h3><a class="text-@BesDiscountColor" asp-controller="home" asp-action="index" asp-route-id="bestdiscount"> <i class="fas fa-arrow-right text-medium  ms-1" aria-hidden="true"></i>&ensp;&ensp;&ensp;Best Discount</a></h3>
+                    <h3 ><a class="text-@BestSellerColor" asp-controller="home" asp-action="index" asp-route-id="bestseller"> <i class="fas fa-arrow-right text-medium  ms-1" aria-hidden="true"></i>&ensp;&ensp;&ensp;Best Seller</a></h3>
                 </a>
               </div>
             </div>
@@ -36,21 +54,25 @@
             <div class="row">
                 @{
                   List<Product> products = new List<Product>();
+                 
                   if(Context.Request.RouteValues["id"] != null){
 
                   if(Context.Request.RouteValues["id"].ToString() == "newproduct"){
                       products = _buyService.GetTopNewProduct() ; 
+                     
                   }
                   else if(Context.Request.RouteValues["id"].ToString() == "bestdiscount"){
                       products = _buyService.GetBessDiscountProduct();
+                      
                   }
                   else if(Context.Request.RouteValues["id"].ToString() == "bestseller"){
                       products = _buyService.GetTopBestSellerProdut();
-                  }}
+                    
+                   }}
                   else{
                        products = _buyService.GetTopNewProduct() ; 
+                   
                   }
-
                   foreach(var item in products){
                         <div class="col-xl-3 col-md-6 mb-xl-0 mb-4 mt-3">
                   <div class="card card-blog card-plain">

@@ -103,7 +103,7 @@ namespace BookWorm.Service
         public List<Product> GetBessDiscountProduct(){
             var products = _productService.GetAllProduct() ; 
             var topProduct = from product in products
-                             orderby product.Discount 
+                             orderby product.Discount descending
                              select product ;
             return topProduct.Take(MAX).ToList() ;    
         }
@@ -111,7 +111,7 @@ namespace BookWorm.Service
         public List<Product> GetTopNewProduct(){
             var products = _productService.GetAllProduct() ; 
             Comparison<Product> comparison = (Product left , Product right) => {
-                return DateTime.Compare((DateTime)left.CreatedDate , (DateTime)right.CreatedDate) ; 
+                return DateTime.Compare((DateTime)right.CreatedDate , (DateTime)left.CreatedDate) ; 
             };
             products.Sort(comparison);
             return products.Take(MAX).ToList();
