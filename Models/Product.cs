@@ -12,6 +12,7 @@ namespace BookWorn.Models
 
         public string Name{ get; set; }
         public string? Image{ get; set;} 
+        [Display(Name = "Price")]
         public decimal Price{ get; set;}
         [ColumnAttribute(TypeName = "nvarchar(MAX)")]
         public string Content{get; set;}
@@ -29,6 +30,7 @@ namespace BookWorn.Models
         [ForeignKey("CategoryID")]
         public Category? Category { get; set; }
         [Required()]
+        [Display(Name = "Category")]
         public string CategoryID { get; set; }
 
 

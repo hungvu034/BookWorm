@@ -55,7 +55,7 @@
                   @{
                    User user = await _userManager.FindByIdAsync(Model.UserID) ; 
                 }
-                <li class="list-group-item text-list"><a asp-action="profile" asp-controller="home" asp-route-id=@Model.UserID>From: @user.UserName</a></li>                         
+                <li class="list-group-item text-list"><a style="font-size: 30px" asp-action="profile" asp-controller="home" asp-route-id=@Model.UserID>From: @user.UserName</a></li>                         
             </ul>
 
             <div class="card-body container" style="text-align: center;">

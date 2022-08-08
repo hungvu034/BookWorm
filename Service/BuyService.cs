@@ -65,7 +65,7 @@ namespace BookWorm.Service
             Decimal Money = 0 ; 
             foreach(var bill in Bills){
                 if(bill.UserBuy == ID){
-                    Money += bill.Price ; 
+                    Money += ( bill.Price )  ; 
                 }
             }
             return Money ; 

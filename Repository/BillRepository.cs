@@ -24,7 +24,7 @@ namespace BookWorm.Repository
             Bill bill = new Bill(){
                 ID = Guid.NewGuid().ToString() , 
                 Date = DateTime.Now ,
-                Price = product.Price , 
+                Price = product.Price * (100 - product.Discount) / 100 , 
                 ProductID = product.ID , 
                 UserBuy = userBuyID , 
                 UserSell = userSellID 
