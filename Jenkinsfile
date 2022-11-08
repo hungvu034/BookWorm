@@ -7,7 +7,6 @@ pipeline{
             }
             post{
                 always{
-                    dotnet run
                 }
                 success{
                     echo "========A executed successfully========"
