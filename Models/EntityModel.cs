@@ -12,9 +12,9 @@ namespace BookWorn.Models
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; } 
         public DbSet<ProductBill> ProductBills { get; set; }
-    
+
         public EntityModel(DbContextOptions<EntityModel> options) : base(options){
- 
+            
         }
 
         protected override void OnModelCreating(ModelBuilder builder)

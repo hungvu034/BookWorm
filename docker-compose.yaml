@@ -1,0 +1,31 @@
+version: '3.8'
+
+volumes:
+  sqlserver_data:
+    name: sqlserver_data
+
+services:
+  bookworm:
+    image: bookworm:v2
+    build: 
+      context: .
+      dockerfile: dockerfile
+    container_name: bookworm
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - ConnectionString=Server=bookwormdb;Database=bookworm;User Id=sa;Password=Password123;Multipleactiveresultsets=true
+    restart: always
+    ports: 
+      - "5000:80"
+    
+  bookwormdb:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: bookwormdb
+    environment:
+      SA_PASSWORD: "Password123"  
+      ACCEPT_EULA: "Y"
+    volumes:
+      - sqlserver_data:/var/lib/sqlserver/data
+    ports:
+      - "1433:1433"

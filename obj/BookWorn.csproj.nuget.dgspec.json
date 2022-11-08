@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/hungvu/Desktop/Asp.net/BookWorm/BookWorm/BookWorn.csproj": {}
+    "/home/hungvu/Desktop/BookWorm/BookWorn.csproj": {}
   },
   "projects": {
-    "/home/hungvu/Desktop/Asp.net/BookWorm/BookWorm/BookWorn.csproj": {
+    "/home/hungvu/Desktop/BookWorm/BookWorn.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/hungvu/Desktop/Asp.net/BookWorm/BookWorm/BookWorn.csproj",
+        "projectUniqueName": "/home/hungvu/Desktop/BookWorm/BookWorn.csproj",
         "projectName": "BookWorn",
-        "projectPath": "/home/hungvu/Desktop/Asp.net/BookWorm/BookWorm/BookWorn.csproj",
+        "projectPath": "/home/hungvu/Desktop/BookWorm/BookWorn.csproj",
         "packagesPath": "/home/hungvu/.nuget/packages/",
-        "outputPath": "/home/hungvu/Desktop/Asp.net/BookWorm/BookWorm/obj/",
+        "outputPath": "/home/hungvu/Desktop/BookWorm/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/hungvu/.nuget/NuGet/NuGet.Config"
@@ -135,16 +135,11 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.6, 6.0.6]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -153,7 +148,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.106/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.401/RuntimeIdentifierGraph.json"
         }
       }
     }

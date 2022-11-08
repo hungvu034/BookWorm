@@ -5,7 +5,9 @@ using Microsoft.EntityFrameworkCore;
 using BookWorn.Service ;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using BookWorm.Service;
-using BookWorm.Repository ; 
+using BookWorm.Repository ;
+using BookWorm.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 string ConnectionString = builder.Configuration.GetSection("ConnectionString").Value;
 // Add services to the container.
@@ -49,10 +51,9 @@ if (!app.Environment.IsDevelopment())
     
     app.UseHsts();
 }
-app.UseHttpsRedirection();
+app.MigrateDb();
 app.UseStaticFiles();
 app.UseRouting();
-
 app.UseAuthentication(); 
 app.UseAuthorization();
 app.MapRazorPages();

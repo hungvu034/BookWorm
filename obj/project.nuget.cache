@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MumkSE82yaqgSa/DO3vU4MA8lBrXMHCN5kI1zLXydJ3dleNKNu8m6xWy4GIZePqdrfCOSc4cCMhCBeMyNgtdyw==",
+  "dgSpecHash": "4cvuTyiP0wPXviHLLDEiPXyRqWjdJMigH0qLRTUj0b5grxQ+2aKHDQMBFzOFLQt0pIXpXvozG5oG17RElNQ6Zg==",
   "success": true,
-  "projectFilePath": "/home/hungvu/Desktop/Asp.net/BookWorm/BookWorm/BookWorn.csproj",
+  "projectFilePath": "/home/hungvu/Desktop/BookWorm/BookWorn.csproj",
   "expectedPackageFiles": [
     "/home/hungvu/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
     "/home/hungvu/.nuget/packages/mailkit/3.3.0/mailkit.3.3.0.nupkg.sha512",
@@ -221,8 +221,7 @@
     "/home/hungvu/.nuget/packages/system.threading.timer/4.3.0/system.threading.timer.4.3.0.nupkg.sha512",
     "/home/hungvu/.nuget/packages/system.windows.extensions/6.0.0/system.windows.extensions.6.0.0.nupkg.sha512",
     "/home/hungvu/.nuget/packages/system.xml.readerwriter/4.3.0/system.xml.readerwriter.4.3.0.nupkg.sha512",
-    "/home/hungvu/.nuget/packages/system.xml.xdocument/4.3.0/system.xml.xdocument.4.3.0.nupkg.sha512",
-    "/home/hungvu/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.6/microsoft.aspnetcore.app.ref.6.0.6.nupkg.sha512"
+    "/home/hungvu/.nuget/packages/system.xml.xdocument/4.3.0/system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }
