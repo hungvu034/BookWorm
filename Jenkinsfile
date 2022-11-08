@@ -7,7 +7,7 @@ pipeline{
             }
             post{
                 always{
-                    echo "========always========"
+                    dotnet run
                 }
                 success{
                     echo "========A executed successfully========"
@@ -18,6 +18,7 @@ pipeline{
             }
         }
     }
+    
     post{
         always{
             echo "========always========"
