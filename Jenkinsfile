@@ -7,7 +7,7 @@ pipeline{
             }
             post{
                 always{
-                    echo "========always========"
+                    sh 'dotnet build '
                 }
                 success{
                     echo "========A executed successfully========"
