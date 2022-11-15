@@ -23,7 +23,7 @@ pipeline{
             }
             post{
                 always{
-                    sh 'dotnet run'
+                    sh 'docker-compose up'
                 }
                 success{
                     echo "========run executed successfully========"
