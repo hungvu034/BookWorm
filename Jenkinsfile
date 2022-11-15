@@ -1,19 +1,35 @@
 pipeline{
     agent any
     stages{
-        stage("A"){
+        stage("build"){
             steps{
-                echo "========executing A========"
+                echo "========building your app========"
             }
             post{
                 always{
                     sh 'dotnet build '
                 }
                 success{
-                    echo "========A executed successfully========"
+                    echo "========build executed successfully========"
                 }
                 failure{
-                    echo "========A execution failed========"
+                    echo "========build execution failed========"
+                }
+            }
+        }
+        stage("run"){
+            steps{
+                echo "=======running your app========="
+            }
+            post{
+                always{
+                    sh 'dotnet run'
+                }
+                success{
+                    echo "========run executed successfully========"
+                }
+                failure{
+                    echo "========run execution failed========"
                 }
             }
         }
